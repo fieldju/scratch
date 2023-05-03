@@ -11,6 +11,7 @@ runs:
   steps:
     - shell: bash
       env:
+        FOO: overridden
         BAR: bam
       run: |
         set -e
