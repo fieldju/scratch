@@ -1,0 +1,14 @@
+name: 'Test Workflow'
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        env:
+          FOO: bar
+        uses: fieldju/scratch/.github/actions/test-action@main

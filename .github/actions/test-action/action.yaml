@@ -1,0 +1,17 @@
+name: setup monorepo
+description: configures pnpm, turbo, and build core libs
+
+inputs:
+  ref:
+    description: 'git ref/tag to checkout and prepare'
+    default: main
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ inputs.ref }}
+    - shell: bash
+      run: |
+        env
