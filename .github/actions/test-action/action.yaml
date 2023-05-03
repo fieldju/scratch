@@ -9,10 +9,9 @@ inputs:
 runs:
   using: composite
   steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ inputs.ref }}
     - shell: bash
+      env:
+        BAR: bam
       run: |
         set -e
         set -x
