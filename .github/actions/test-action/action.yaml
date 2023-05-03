@@ -14,4 +14,9 @@ runs:
         ref: ${{ inputs.ref }}
     - shell: bash
       run: |
+        set -e
+        set -x
+        
+        echo 'hey!'
         env
+        echo '-----'
