@@ -5,6 +5,9 @@ inputs:
   ref:
     description: 'git ref/tag to checkout and prepare'
     default: main
+  run:
+    description: 'shell script / commands to run with the turbo repo token already configured'
+    required: false
 
 runs:
   using: composite
@@ -15,8 +18,7 @@ runs:
         BAR: bam
       run: |
         set -e
-        set -x
         
-        echo 'hey!'
-        env
-        echo '-----'
+        echo '----------------------------------------------------------------------------'
+        ${{ inputs.run }
+        echo '----------------------------------------------------------------------------'
