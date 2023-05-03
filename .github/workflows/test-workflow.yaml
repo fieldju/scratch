@@ -1,18 +1,9 @@
 name: 'Test Workflow'
 on:
-  push:
-    branches:
-      - main
+  pull_request:
 
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        env:
-          FOO: bar
-        uses: fieldju/scratch/.github/actions/test-action@main
-        with:
-          run: |
-            echo 'hey listen!'
-            echo 'I want to tell you something'
+      - run: env
