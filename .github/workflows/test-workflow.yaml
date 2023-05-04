@@ -6,4 +6,6 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - run: env
+      - env:
+        GITHUB_BUILD_LINK: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: echo "${GITHUB_BUILD_LINK}"
