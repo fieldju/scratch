@@ -10,7 +10,9 @@ jobs:
       matrix:
         shard: [ 1, 2 ]
     steps:
-      - run: echo 'hello world'
+      - run: |
+          echo 'hello world'
+          echo '${{ strategy.job-total }}'
   job-two:
     needs: job-one
     runs-on: ubuntu-latest
