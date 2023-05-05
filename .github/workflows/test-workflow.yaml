@@ -17,5 +17,5 @@ jobs:
     steps:
       - run: |
           echo '---------------------------------------'
-          echo '${{ job-one.strategy.job-total }}'
+          echo '${{ needs.job-one.strategy.job-total }}'
           echo '---------------------------------------'
