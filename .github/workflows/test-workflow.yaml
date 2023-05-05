@@ -20,5 +20,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          +x
+          set +x
           echo '${{ needs.job-one.outputs.SHARD_COUNT }}'
