@@ -10,15 +10,16 @@ jobs:
       matrix:
         shard: [ 1, 2 ]
     outputs:
-      SHARD_COUNT: ${{ steps.step1.outputs.SHARD_COUNT }}
+      shards: ${{ steps.foo.outputs.shards }}
     steps:
-      - run: |
+      - id: foo
+        run: |
           echo 'hello world'
-          echo SHARD_COUNT='${{ strategy.job-total }}' >> $GITHUB_OUTPUT
+          echo shards='${{ strategy.job-total }}' >> $GITHUB_OUTPUT
   job-two:
     needs: job-one
     runs-on: ubuntu-latest
     steps:
       - run: |
           set +x
-          echo '${{ needs.job-one.outputs.SHARD_COUNT }}'
+          echo '${{ needs.job-one.outputs.shards }}'
