@@ -9,6 +9,8 @@ jobs:
       fail-fast: false
       matrix:
         shard: [ 1, 2 ]
+    outputs:
+      SHARD_COUNT: ${{ steps.step1.outputs.SHARD_COUNT }}
     steps:
       - run: |
           echo 'hello world'
@@ -19,4 +21,4 @@ jobs:
     steps:
       - run: |
           +x
-          echo '${{ jobs.job-one.outputs.SHARD_COUNT }}'
+          echo '${{ needs.job-one.outputs.SHARD_COUNT }}'
