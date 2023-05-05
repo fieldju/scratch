@@ -15,6 +15,7 @@ jobs:
     needs: job-one
     runs-on: ubuntu-latest
     steps:
-      echo '---------------------------------------'
-      echo '${{ job-one.strategy.job-total }}'
-      echo '---------------------------------------'
+      - run: |
+          echo '---------------------------------------'
+          echo '${{ job-one.strategy.job-total }}'
+          echo '---------------------------------------'
