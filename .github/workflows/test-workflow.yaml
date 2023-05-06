@@ -1,9 +1,25 @@
 name: 'Test Workflow'
 on:
-  pull_request:
+  push:
 
 jobs:
-  main:
+  job-one:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [ 1, 2, 3 ]
+    outputs:
+      shards: ${{ steps.foo.outputs.shards }}
+    steps:
+      - id: foo
+        run: |
+          echo 'hello world'
+          echo shards='${{ strategy.job-total }}' >> $GITHUB_OUTPUT
+  job-two:
+    needs: job-one
     runs-on: ubuntu-latest
     steps:
-      - run: env
+      - run: |
+          set +x
+          echo '${{ needs.job-one.outputs.shards }}'
