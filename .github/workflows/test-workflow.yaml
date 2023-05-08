@@ -6,4 +6,6 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - run: env
+      - id: foo
+        run: echo "pipelineId=8cf7e246-83f2-438b-8131-ae122427291d" >> $GITHUB_OUTPUT
+      - run: echo "the pipeline id is ${{ steps.foo.outputs.pipelineId }}"
