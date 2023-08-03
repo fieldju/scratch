@@ -1,11 +1,12 @@
 name: 'Test Workflow'
 on:
-  push:
+  pull_request:
+    types: [ closed ]
 
 jobs:
   main:
     runs-on: ubuntu-latest
     steps:
       - id: foo
-        run: echo "pipelineId=8cf7e246-83f2-438b-8131-ae122427291d" >> $GITHUB_OUTPUT
-      - run: echo "the pipeline id is ${{ steps.foo.outputs.pipelineId }}"
+        run: env
+      - run: echo '${{ github.base_ref}}'
